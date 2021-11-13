@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_migrow/Widget/bottom_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -154,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomNav()));},
                 child: Container(
                     width: 300,
                     height: 50,
