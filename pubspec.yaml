@@ -37,6 +37,12 @@ dependencies:
   hexcolor: ^2.0.5
   google_fonts: ^2.1.0
   bottom_navy_bar: ^6.0.0
+  flutter_chat_ui: ^1.4.4
+  image_picker: ^0.8.4+1
+  file_picker: ^4.1.4
+  uuid: ^3.0.5
+  open_file: ^3.2.1
+  mime: ^1.0.1
 
 dev_dependencies:
   flutter_test:

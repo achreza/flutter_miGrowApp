@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class FavoriteButton extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
     return IconButton(
         icon: Icon(
           isFavorite ? Icons.favorite : Icons.favorite_border,
-          color: Colors.red,
+          color: HexColor('E98C23'),
         ),
         onPressed: () {
           setState(() {

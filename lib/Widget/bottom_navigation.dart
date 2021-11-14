@@ -1,7 +1,11 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:flutter_migrow/Screens/chat.dart';
 import 'package:flutter_migrow/Screens/home.dart';
 import 'package:flutter_migrow/Screens/login.dart';
+import 'package:flutter_migrow/Screens/profile.dart';
 import 'package:flutter_migrow/Screens/register.dart';
 import 'package:flutter_migrow/Screens/splash_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -46,9 +50,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   static List<Widget> Screens = [
     const DashboardMenu(),
-    const LoginPage(),
+    const ChatPage(),
     
-    const RegisterPage(),
+    ProfilePage(),
   ];
 
 
@@ -58,8 +62,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     });
   }
 
-  logout(BuildContext context) {
-    Navigator.push(
+  void logout(BuildContext context) {
+    Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
@@ -78,23 +82,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
             inactiveColor: HexColor('CACACA'),
-            icon: Icon(Icons.apps),
+            icon: Icon(Icons.home),
             title: Text('Home'),
             activeColor: HexColor('E98C23'),
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             inactiveColor: HexColor('CACACA'),
-            icon: Icon(Icons.people),
-            title: Text('Users'),
+            icon: Icon(Icons.message),
+            title: Text('Chat'),
             activeColor: HexColor('E98C23'),
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             inactiveColor: HexColor('CACACA'),
-            icon: Icon(Icons.message),
+            icon: Icon(Icons.person),
             title: Text(
-              'Messages',
+              'Profile',
             ),
             activeColor: HexColor('E98C23'),
             textAlign: TextAlign.center,

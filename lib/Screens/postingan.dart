@@ -41,11 +41,14 @@ class _PostinganState extends State<Postingan> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: 10),
-                          color: Colors.grey,
+                          
                           width: MediaQuery.of(context).size.width,
                           height: 220,
-                          child: FittedBox(
-                              fit: BoxFit.fill, child: postingan.image),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: FittedBox(
+                                fit: BoxFit.fill, child: postingan.image),
+                          ),
                         ),
                         Container(
                           decoration: BoxDecoration(
