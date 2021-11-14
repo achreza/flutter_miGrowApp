@@ -9,6 +9,42 @@ class ProfilePage extends StatelessWidget {
 
   final BottomNav logout = new BottomNav();
 
+  showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("Cancel"),
+    onPressed: () {
+      Navigator.of(context, rootNavigator: true).pop(true);
+    },
+  );
+  Widget continueButton = TextButton(
+    child: Text("Logout"),
+    onPressed: () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
+      Navigator.of(context, rootNavigator: true).pop(true);
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Logout"),
+    content: Text("Are you sure to Log Out from miGrow?"),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -366,10 +402,7 @@ class ProfilePage extends StatelessWidget {
                             child: FlatButton(
                               
                               onPressed: () {
-                                Navigator.of(context)
-                                    .pushReplacement(MaterialPageRoute(
-                                  builder: (context) => LoginPage(),
-                                ));
+                                showAlertDialog(context);
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,

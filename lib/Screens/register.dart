@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_migrow/Screens/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -245,9 +246,17 @@ class _RegisterPageState extends State<RegisterPage> {
               onPressed: () {
                 
               },
-              child: Text(
-                'Belum Punya Akun? Daftar',
-                style: GoogleFonts.getFont('Nunito',fontSize: 14,fontWeight: FontWeight.w700,color: HexColor('E98C23'))
+              child: GestureDetector(
+                onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
+              },
+                child: Text(
+                  'Sudah punya Akun? Login',
+                  style: GoogleFonts.getFont('Nunito',fontSize: 14,fontWeight: FontWeight.w700,color: HexColor('E98C23'))
+                ),
               ),
             ),
           ),
