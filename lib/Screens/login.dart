@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_migrow/Screens/home.dart';
 import 'package:flutter_migrow/Screens/register.dart';
 import 'package:flutter_migrow/Widget/bottom_navigation.dart';
+import 'package:flutter_migrow/services/auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,6 +19,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
+    final authService = Provider.of<AuthService>(context);
+
     return MaterialApp(
       home: Scaffold(
         body: Column(
@@ -63,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: 335,
                 child: TextFormField(
                   obscureText: false,
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                     labelStyle: GoogleFonts.getFont("Nunito"),
@@ -95,7 +104,8 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 width: 335,
                 child: TextFormField(
-                  obscureText: false,
+                  obscureText: true,
+                  controller: passwordController,
                   decoration: InputDecoration(
                     labelText: 'Password',
                     labelStyle: GoogleFonts.getFont("Nunito"),
@@ -156,7 +166,14 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Center(
               child: ElevatedButton(
-                onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomNav()));},
+                onPressed: () {
+                  authService.signInWithEmailAndPassword(
+                      emailController.text, passwordController.text);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BottomNav()),
+                  );
+                },
                 child: Container(
                     width: 300,
                     height: 50,
@@ -183,7 +200,6 @@ class _LoginPageState extends State<LoginPage> {
               child: ElevatedButton(
                 onPressed: () {},
                 child: Container(
-                    
                     width: 300,
                     height: 50,
                     child: Center(
@@ -200,36 +216,34 @@ class _LoginPageState extends State<LoginPage> {
                         MaterialStateProperty.all<Color>(HexColor("ffffff")),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                      side: BorderSide(color: HexColor('CACACA'))
-                    ))),
+                            borderRadius: BorderRadius.circular(8.0),
+                            side: BorderSide(color: HexColor('CACACA'))))),
               ),
             ),
             Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.transparent,
-                onSurface: Colors.transparent,
-                shadowColor: Colors.transparent,
-              ),
-              onPressed: () {
-                
-              },
-              child: GestureDetector(
-                onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RegisterPage()),
-                );
-              },
-                child: Text(
-                  'Belum Punya Akun? Daftar',
-                  style: GoogleFonts.getFont('Nunito',fontSize: 14,fontWeight: FontWeight.w700,color: HexColor('E98C23'))
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.transparent,
+                  onSurface: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                ),
+                onPressed: () {},
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RegisterPage()),
+                    );
+                  },
+                  child: Text('Belum Punya Akun? Daftar',
+                      style: GoogleFonts.getFont('Nunito',
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: HexColor('E98C23'))),
                 ),
               ),
             ),
-          ),
-
           ],
         ),
       ),

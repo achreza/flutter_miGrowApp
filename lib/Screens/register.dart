@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_migrow/Screens/login.dart';
+import 'package:flutter_migrow/services/auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({ Key? key }) : super(key: key);
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -14,6 +16,10 @@ class _RegisterPageState extends State<RegisterPage> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
+    final authService = Provider.of<AuthService>(context);
     return MaterialApp(
       home: Scaffold(
         body: Column(
@@ -54,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: HexColor("#A3A3A3"),
                   ),
                 )),
-                Center(
+            Center(
               child: Container(
                 margin: EdgeInsets.only(top: 20),
                 height: 40,
@@ -83,7 +89,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  
                 ),
               ),
             ),
@@ -93,6 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 40,
                 width: 335,
                 child: TextFormField(
+                  controller: emailController,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -126,6 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 40,
                 width: 335,
                 child: TextFormField(
+                  controller: passwordController,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: 'Password',
@@ -154,8 +161,8 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 23, right: 23, top: 5, bottom: 0),
+              padding:
+                  const EdgeInsets.only(left: 23, right: 23, top: 5, bottom: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -187,7 +194,14 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await authService.createUserWithEmailAndPassword(
+                      emailController.text, passwordController.text);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
+                },
                 child: Container(
                     width: 300,
                     height: 50,
@@ -214,7 +228,6 @@ class _RegisterPageState extends State<RegisterPage> {
               child: ElevatedButton(
                 onPressed: () {},
                 child: Container(
-                    
                     width: 300,
                     height: 50,
                     child: Center(
@@ -231,36 +244,34 @@ class _RegisterPageState extends State<RegisterPage> {
                         MaterialStateProperty.all<Color>(HexColor("ffffff")),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                      side: BorderSide(color: HexColor('CACACA'))
-                    ))),
+                            borderRadius: BorderRadius.circular(8.0),
+                            side: BorderSide(color: HexColor('CACACA'))))),
               ),
             ),
             Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.transparent,
-                onSurface: Colors.transparent,
-                shadowColor: Colors.transparent,
-              ),
-              onPressed: () {
-                
-              },
-              child: GestureDetector(
-                onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                );
-              },
-                child: Text(
-                  'Sudah punya Akun? Login',
-                  style: GoogleFonts.getFont('Nunito',fontSize: 14,fontWeight: FontWeight.w700,color: HexColor('E98C23'))
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.transparent,
+                  onSurface: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                ),
+                onPressed: () {},
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
+                    );
+                  },
+                  child: Text('Sudah punya Akun? Login',
+                      style: GoogleFonts.getFont('Nunito',
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: HexColor('E98C23'))),
                 ),
               ),
             ),
-          ),
-
           ],
         ),
       ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "56989452290",
+    "project_id": "migrowapp",
+    "storage_bucket": "migrowapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56989452290:android:ff83b7669e3641dda77f1b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_migrow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "56989452290-95sa5e6elq4nung96nmkhb7duh1or2bi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdIqG18A7emrdhtHvATeyT1Hm-6-2lhIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "56989452290-95sa5e6elq4nung96nmkhb7duh1or2bi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
