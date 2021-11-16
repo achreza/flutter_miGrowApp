@@ -56,66 +56,80 @@ class DashboardMenu extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left: 8, right: 8),
-                    margin: EdgeInsets.only(right: 8),
-                    height: 32.0,
-                    child: Center(
-                        child: Text(
-                      'Semua',
-                      style: GoogleFonts.getFont('Nunito',
-                          fontSize: 14, color: HexColor('D17104')),
-                    )),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: HexColor('F0A81E').withOpacity(0.3)),
+                  GestureDetector(
+                    child: Container(
+                      padding: EdgeInsets.only(left: 8, right: 8),
+                      margin: EdgeInsets.only(right: 8),
+                      height: 32.0,
+                      child: Center(
+                          child: Text(
+                        'Semua',
+                        style: GoogleFonts.getFont('Nunito',
+                            fontSize: 14, color: HexColor('D17104')),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: HexColor('F0A81E').withOpacity(0.3)),
+                    ),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(left: 8, right: 8),
-                    margin: EdgeInsets.only(right: 8),
-                    height: 32.0,
-                    child: Center(
-                        child: Text(
-                      'Makanan',
-                      style: GoogleFonts.getFont('Nunito',
-                          fontSize: 14, color: HexColor('D17104')),
-                    )),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: HexColor('F0A81E').withOpacity(0.3)),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      padding: EdgeInsets.only(left: 8, right: 8),
+                      margin: EdgeInsets.only(right: 8),
+                      height: 32.0,
+                      child: Center(
+                          child: Text(
+                        'Makanan',
+                        style: GoogleFonts.getFont('Nunito',
+                            fontSize: 14, color: HexColor('D17104')),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: HexColor('F0A81E').withOpacity(0.3)),
+                    ),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(left: 8, right: 8),
-                    margin: EdgeInsets.only(right: 8),
-                    height: 32.0,
-                    child: Center(
-                        child: Text(
-                      'Furnitur',
-                      style: GoogleFonts.getFont('Nunito',
-                          fontSize: 14, color: HexColor('D17104')),
-                    )),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: HexColor('F0A81E').withOpacity(0.3)),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      padding: EdgeInsets.only(left: 8, right: 8),
+                      margin: EdgeInsets.only(right: 8),
+                      height: 32.0,
+                      child: Center(
+                          child: Text(
+                        'Furnitur',
+                        style: GoogleFonts.getFont('Nunito',
+                            fontSize: 14, color: HexColor('D17104')),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: HexColor('F0A81E').withOpacity(0.3)),
+                    ),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(left: 8, right: 8),
-                    margin: EdgeInsets.only(right: 8),
-                    height: 32.0,
-                    child: Center(
-                        child: Text(
-                      'Kerajinan',
-                      style: GoogleFonts.getFont('Nunito',
-                          fontSize: 14, color: HexColor('D17104')),
-                    )),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: HexColor('F0A81E').withOpacity(0.3)),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      padding: EdgeInsets.only(left: 8, right: 8),
+                      margin: EdgeInsets.only(right: 8),
+                      height: 32.0,
+                      child: Center(
+                          child: Text(
+                        'Kerajinan',
+                        style: GoogleFonts.getFont('Nunito',
+                            fontSize: 14, color: HexColor('D17104')),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: HexColor('F0A81E').withOpacity(0.3)),
+                    ),
                   ),
                 ],
               ),
             ),
-            Container(margin: EdgeInsets.only(top: 20,left: 20,right: 20),height: 490,child: Postingan())
+            Container(
+                margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                height: 490,
+                child: Postingan())
           ],
         ),
       ),
